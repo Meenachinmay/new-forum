@@ -22,5 +22,17 @@
                 @include('thread.reply')
             </div>
         </div>
+
+        <div class="row justify-content-center mt-3">
+            <div class="col-md-8">
+                <form action="{{ route('replies.store', $thread->id)}}" method="POST">
+                    {{ csrf_field() }}
+                    <div class="form-group">
+                        <textarea name="body" rows="5" class="form-control" placeholder="Have something to say!"></textarea>
+                        <button class="btn btn-primary mt-3" type="submit">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
 @endsection
