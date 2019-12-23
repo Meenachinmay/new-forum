@@ -23,6 +23,7 @@
             </div>
         </div>
 
+        @if(auth()->check())
         <div class="row justify-content-center mt-3">
             <div class="col-md-8">
                 <form action="{{ route('replies.store', $thread->id)}}" method="POST">
@@ -34,5 +35,8 @@
                 </form>
             </div>
         </div>
+        @else
+            <p class="text-center">Please <a href="{{ route('login') }}">Sign in</a> to participate in the forum.</p>
+        @endif
     </div>
 @endsection
