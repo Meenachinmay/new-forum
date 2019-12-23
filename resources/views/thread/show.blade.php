@@ -23,6 +23,9 @@
                     <div class="card-body">
                         @foreach($thread->replies as $reply)
                             <div class="card mb-3">
+                                <div class="card-header">
+                                    {{ $reply->created_at->diffForHumans() }}
+                                </div>
                                 <div class="card-body">
                                     <p>
                                         {{ $reply->body }}
