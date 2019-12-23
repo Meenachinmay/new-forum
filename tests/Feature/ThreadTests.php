@@ -7,6 +7,7 @@ use Tests\TestCase;
 class ThreadTests extends TestCase
 {
     use RefreshDatabase;
+    protected $thread;
 
     public function setUp(): void
     {
@@ -35,10 +36,27 @@ class ThreadTests extends TestCase
     }
 
     /** @test */
-    public function a_thread_can_have_replies(){
+    public function a_thread_can_have_replies_and_a_user_can_see_all_of_those_replies(){
         $reply = factory('App\Reply')
             ->create(['thread_id' => $this->thread->id]);
         $this->get('/threads/' . $this->thread->id)
             ->assertSee($reply->body);
+    }
+
+    /** @test */
+    public function a_thread_belongs_to_a_creator()
+    {
+        $this->assertInstanceOf('App\User', $this->thread->creator);
+    }
+
+    /** @test */
+    public function a_thread_can_persist_a_new_reply()
+    {
+        $this->thread->addReply([
+           'body' => 'foobar',
+           'user_id' => 1
+        ]);
+
+        $this->assertCount(1, $this->thread->replies);
     }
 }
