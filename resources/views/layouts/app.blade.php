@@ -19,7 +19,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
-<body>
+<body style="padding-bottom: 15rem;">
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
@@ -35,6 +35,10 @@
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
                             <a class="nav-link" href="/threads">{{ __('All Threads') }}</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="/threads/new">{{ __('New Thread') }}</a>
                         </li>
 
                     </ul>

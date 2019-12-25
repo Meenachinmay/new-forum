@@ -17,11 +17,19 @@
             </div>
         </div>
 
-        <div class="row justify-content-center mt-3">
-            <div class="col-md-8">
-                @include('thread.reply')
+        @if($thread->replies()->count())
+            <div class="row justify-content-center mt-3">
+                <div class="col-md-8">
+                    @include('thread.reply')
+                </div>
             </div>
-        </div>
+        @else
+            <div class="row justify-content-center text-center mt-2">
+                <div class="col-md-8">
+                    <p>There are no replies associated with this thread, let's create one, after signing In.</p>
+                </div>
+            </div>
+        @endif
 
         @if(auth()->check())
         <div class="row justify-content-center mt-3">
